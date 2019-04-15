@@ -187,12 +187,12 @@ function getItemsForContainer(calendarID, event) {
 /* Writes data to the data Sheet given an array of events.*/
 function writeToSheet(calendarID, eventsArgs) {
     const valueInputOption = "RAW";
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var dataSheetName = ss.getSheetByName("Time in Meetings data");
+    var activeSheet = SpreadsheetApp.getActiveSpreadsheet();
+    var dataSheetName = activeSheet.getSheetByName("Time in Meetings data");
     var outerEventContainer = [];
     
     if (dataSheetName == null) {
-    dataSheetName = ss.insertSheet().setName("Time in Meetings data");
+    dataSheetName = activeSheet.insertSheet().setName("Time in Meetings data");
     var dataSheetCellRange = "A1:F1"
     var dataSheetValues = [["User Email","Meeting Creator","Attendee Emails","Number of Attendees","Meeting Date","Duration of Meeting"]];
     dataSheetName.getRange(dataSheetCellRange).setValues(dataSheetValues);
