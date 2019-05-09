@@ -15,8 +15,8 @@ function buildMenu() {
 }
 
 
-/*Takes the email IDs a user has selected, then asks the user how many days back they want meeting information on. This info is then passed in to the 
-getTimeInMeetings function.*/
+/*Takes the email IDs a user has selected, then asks the user how many days back they want meeting information on. This info
+is then passed in to the getTimeInMeetings function.*/
 function getMeetingInput() {
     var calendarIDList = [];
     var userIDs = SpreadsheetApp.getSelection()
@@ -42,7 +42,8 @@ function getMeetingInput() {
       return null;
     } else {
     while ((userDays.getResponseText() % 1 !== 0) || (userDays.getResponseText() < 1)) {
-        userDays = ui.prompt("Number of days?", "Invalid response! Please choose a positive whole number.", ui.ButtonSet.OK_CANCEL);
+        userDays = ui.prompt("Number of days?", "Invalid response! Please choose a positive whole number.", 
+                             ui.ButtonSet.OK_CANCEL);
         if (userDays.getSelectedButton() == ui.Button.CANCEL) {
             return null;
         }
@@ -76,9 +77,9 @@ function getTimeInMeetings(numberOfDays, calendarIDList) {
 };
 
 
-/* Given the calendarID and calendarArgs, returns an array of arrays, each inner array containing a number 
-of the user's valid events. For example, the summary of the 1st event in the second container
-can be accessed with outerEventsContainer[2][0].summary. This is to avoid write limits via Google's API.*/
+/* Given the calendarID and calendarArgs, returns an array of arrays, each inner array containing a number of the user's 
+valid events. For example, the summary of the 1st event in the second container can be accessed with 
+outerEventsContainer[2][0].summary. This is to avoid write limits via Google's API.*/
 function getMeetings(calendarID, calendarArgs) {
     try {
         var calendarEventsList = Calendar.Events.list(calendarID, calendarArgs);
@@ -197,7 +198,8 @@ function writeToSheet(calendarID, eventsArgs) {
     if (dataSheetName == null) {
         dataSheetName = activeSheet.insertSheet().setName("Time in Meetings data");
         var dataSheetCellRange = "A1:F1"
-        var dataSheetValues = [["User Email","Meeting Creator","Attendee Emails","Number of Attendees","Meeting Date","Duration of Meeting"]];
+        var dataSheetValues = [["User Email","Meeting Creator","Attendee Emails","Number of Attendees","Meeting Date",
+                                "Duration of Meeting"]];
         dataSheetName.getRange(dataSheetCellRange).setValues(dataSheetValues);
         dataSheetName.getRange(dataSheetCellRange).setFontWeight("bold");    
     }
