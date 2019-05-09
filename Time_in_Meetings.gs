@@ -44,7 +44,7 @@ function getMeetingInput() {
     while ((userDays.getResponseText() % 1 !== 0) || (userDays.getResponseText() < 1)) {
         userDays = ui.prompt("Number of days?", "Invalid response! Please choose a positive whole number.", ui.ButtonSet.OK_CANCEL);
         if (userDays.getSelectedButton() == ui.Button.CANCEL) {
-        return null;
+            return null;
         }
     }
 
@@ -195,11 +195,11 @@ function writeToSheet(calendarID, eventsArgs) {
     var outerEventContainer = [];
     
     if (dataSheetName == null) {
-    dataSheetName = activeSheet.insertSheet().setName("Time in Meetings data");
-    var dataSheetCellRange = "A1:F1"
-    var dataSheetValues = [["User Email","Meeting Creator","Attendee Emails","Number of Attendees","Meeting Date","Duration of Meeting"]];
-    dataSheetName.getRange(dataSheetCellRange).setValues(dataSheetValues);
-    dataSheetName.getRange(dataSheetCellRange).setFontWeight("bold");    
+        dataSheetName = activeSheet.insertSheet().setName("Time in Meetings data");
+        var dataSheetCellRange = "A1:F1"
+        var dataSheetValues = [["User Email","Meeting Creator","Attendee Emails","Number of Attendees","Meeting Date","Duration of Meeting"]];
+        dataSheetName.getRange(dataSheetCellRange).setValues(dataSheetValues);
+        dataSheetName.getRange(dataSheetCellRange).setFontWeight("bold");    
     }
 
     try {
