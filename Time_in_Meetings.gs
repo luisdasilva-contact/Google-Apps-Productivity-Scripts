@@ -61,7 +61,6 @@ function getTimeInMeetings(numberOfDays, calendarIDList) {
     const currentTime = new Date();
     var timeMin = new Date();
     timeMin.setDate(currentTime.getDate() - numberOfDays);
-
     var calendarArgs = {
         timeMin: timeMin.toISOString(),
         timeMax: currentTime.toISOString(),
@@ -145,6 +144,7 @@ function eventDeclined(calendarID, event) {
 /* Returns an array of attendee emails given an event with at least 2 attendees. */
 function getAttendeeEmails(event) {
     eventAttendeeEmails = [];
+    
     event.attendees.forEach(function(attendee) {
         if (((/@resource.calendar.google.com/.test(attendee.email)) != true) && (attendee.email != event.creator.email)) {
             eventAttendeeEmails.push(attendee.email);
@@ -156,7 +156,6 @@ function getAttendeeEmails(event) {
 
 /* Receives an ID and event, and returns an array object containing desired outputs as arrays. */
 function getItemsForContainer(calendarID, event) {
-    
     var attendeeEmails = [];
     var meetingDate = [];
     var meetingDuration = [];
