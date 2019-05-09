@@ -19,7 +19,9 @@ function buildMenu() {
 getTimeInMeetings function.*/
 function getMeetingInput() {
     var calendarIDList = [];
-    var userIDs = SpreadsheetApp.getSelection().getActiveRange().getValues();
+    var userIDs = SpreadsheetApp.getSelection()
+                                .getActiveRange()
+                                .getValues();
 
     if (userIDs == "") {
         ui.alert("You have no text selected!");
@@ -151,8 +153,9 @@ function getAttendeeEmails(event) {
 }
 
 
+/* Receives an ID and event, and returns an array object containing desired outputs as arrays. */
 function getItemsForContainer(calendarID, event) {
-    /* Receives an ID and event, and returns an array object containing desired outputs as arrays. */
+    
     var attendeeEmails = [];
     var meetingDate = [];
     var meetingDuration = [];
@@ -202,7 +205,6 @@ function writeToSheet(calendarID, eventsArgs) {
     try {
         eventsArgs.forEach(function(outerEvents) {
             var innerEventContainer = [];
-
             outerEvents.forEach(function(innerEvent) {
                 innerEventContainer.push(getItemsForContainer(calendarID, innerEvent));
             });
