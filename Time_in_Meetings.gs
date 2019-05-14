@@ -41,11 +41,11 @@ function getMeetingInput() {
     if (userDays.getSelectedButton() == ui.Button.CANCEL) {
       return null;
     } else {
-    while ((userDays.getResponseText() % 1 !== 0) || (userDays.getResponseText() < 1)) {
-        userDays = ui.prompt("Number of days?", "Invalid response! Please choose a positive whole number.", 
+        while ((userDays.getResponseText() % 1 !== 0) || (userDays.getResponseText() < 1)) {
+            userDays = ui.prompt("Number of days?", "Invalid response! Please choose a positive whole number.", 
                              ui.ButtonSet.OK_CANCEL);
-        if (userDays.getSelectedButton() == ui.Button.CANCEL) {
-            return null;
+            if (userDays.getSelectedButton() == ui.Button.CANCEL) {
+                return null;
         }
     }
 
