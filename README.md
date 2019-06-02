@@ -1,6 +1,3 @@
-# Google Apps Productivity Scripts
-A repository for any productivity programs I create with Google Apps Script!
-
 ### Time In Meetings
 Time_in_Meetings.gs is used in Google Sheets to display information on the Google Calendar events of users in your organization. <sup>1</sup>
 
