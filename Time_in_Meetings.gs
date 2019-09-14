@@ -130,8 +130,8 @@ function attendeesInMeeting(event) {
 function eventDeclined(calendarID, event) {
     if (attendeesInMeeting(event) === true) {
         event.attendees.forEach(function(eventAttendee) {
-            if (calendarID == eventAttendee.email) {
-                if (eventAttendee.responseStatus == "declined") {
+            if (calendarID === eventAttendee.email) {
+                if (eventAttendee.responseStatus === "declined") {
                     return true;
                 }
             }
@@ -231,7 +231,7 @@ function writeToSheet(calendarID, eventsArgs) {
     valueRange.values = values;
     valueRange.majorDimension = "COLUMNS";
 
-    if (values.length !== 0) {
+    if (values.length !=== 0) {
         dataSheetName.getRange(dataSheetName.getLastRow() + 1, 1, values.length, values[0].length).setValues(values);
     }
 }
