@@ -23,14 +23,14 @@ function getMeetingInput() {
                                 .getActiveRange()
                                 .getValues();
 
-    if (userIDs == "") {
+    if (userIDs === "") {
         ui.alert("You have no text selected!");
         return null;
     }
 
     userIDs.forEach(function(userIDArray) {
         userIDArray.forEach(function(userID) {
-        if (userID !== "") {
+        if (userID !=== "") {
             calendarIDList.push(userID);
             }
         });
@@ -38,18 +38,18 @@ function getMeetingInput() {
 
     var userDays = ui.prompt("Number of Days?", "How many days back would you like to see?", ui.ButtonSet.OK_CANCEL);
     
-    if (userDays.getSelectedButton() == ui.Button.CANCEL) {
+    if (userDays.getSelectedButton() === ui.Button.CANCEL) {
       return null;
     } else {
-        while ((userDays.getResponseText() % 1 !== 0) || (userDays.getResponseText() < 1)) {
+        while ((userDays.getResponseText() % 1 !=== 0) || (userDays.getResponseText() < 1)) {
             userDays = ui.prompt("Number of days?", "Invalid response! Please choose a positive whole number.", 
                              ui.ButtonSet.OK_CANCEL);
-            if (userDays.getSelectedButton() == ui.Button.CANCEL) {
+            if (userDays.getSelectedButton() === ui.Button.CANCEL) {
                 return null;
         }
     }
 
-    if (userDays.getSelectedButton() == ui.Button.OK) {
+    if (userDays.getSelectedButton() === ui.Button.OK) {
         getTimeInMeetings(userDays.getResponseText(), calendarIDList);
     }
     }
@@ -100,7 +100,7 @@ function createContainers(calendarID, events) {
 
     if (events.length > 0)
         events.forEach(function(event) {
-            if (((attendeesInMeeting(event)) == true) && ((eventDeclined(calendarID, event)) == false)) {
+            if (((attendeesInMeeting(event)) === true) && ((eventDeclined(calendarID, event)) === false)) {
                 if (innerEventsContainer.length < innerContainerSize) {
                     innerEventsContainer.push(event);
                 } else {
@@ -128,7 +128,7 @@ function attendeesInMeeting(event) {
 
 /* Returns a true/false value based upon whether the user declined the event. */
 function eventDeclined(calendarID, event) {
-    if (attendeesInMeeting(event) == true) {
+    if (attendeesInMeeting(event) === true) {
         event.attendees.forEach(function(eventAttendee) {
             if (calendarID == eventAttendee.email) {
                 if (eventAttendee.responseStatus == "declined") {
@@ -167,13 +167,13 @@ function getItemsForContainer(calendarID, event) {
         return null;
     }
 
-    if (event.visibility == "private") {
+    if (event.visibility === "private") {
         attendeeEmails.push("private event, emails hidden.");
     } else {
         attendeeEmails.push(getAttendeeEmails(event).toString());
     }
 
-    if (eventStart == "Invalid Date" || eventEnd == "Invalid Date") {
+    if (eventStart === "Invalid Date" || eventEnd === "Invalid Date") {
         meetingDate.push(event.start.date);
         meetingDuration.push("All-day event.");
     } else {
@@ -194,7 +194,7 @@ function writeToSheet(calendarID, eventsArgs) {
     var dataSheetName = activeSheet.getSheetByName("Time in Meetings data");
     var outerEventContainer = [];
     
-    if (dataSheetName == null) {
+    if (dataSheetName === null) {
         dataSheetName = activeSheet.insertSheet().setName("Time in Meetings data");
         var dataSheetCellRange = "A1:F1"
         var dataSheetValues = [["User Email","Meeting Creator","Attendee Emails","Number of Attendees","Meeting Date",
