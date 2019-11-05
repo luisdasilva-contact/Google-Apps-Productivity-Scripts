@@ -1,6 +1,9 @@
 ### Time In Meetings
 Time_in_Meetings.gs is used in Google Sheets to display information on the Google Calendar events of users in your organization. <sup>1</sup>
 
+### NOTE: 
+Syntax for Calendar API has recently been updated. Code included in this program may not function correctly until the next update.
+
 ##### Instructions: 
 
 
