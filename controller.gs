@@ -1,4 +1,4 @@
-/*
+/**
  * Takes the user's input, and parses it as a list of emails.
  * @return {?Array<string>} Returns the user's selection as a list of strings, 
         separated by cell. Null if no text is selected.
@@ -24,7 +24,7 @@ function getCalendarIDList() {
   return calendarIDList;
 };
 
-/*
+/**
  * Retrieves the number of days back the user states they'd like to look back.
  * @return {?number} The number of days the user would like to look back. Null
         if canceled. 
