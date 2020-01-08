@@ -1,4 +1,4 @@
-/* 
+/** 
  * Writes information on meetings from a list of given emails across a 
       user-specified number of days.
  */
@@ -26,7 +26,7 @@ function writeTimeInMeetings() {
   };
 };
 
-/*
+/**
  * Given information on a calendar, returns an array of arrays, with each inner 
       array containing up to 50 of the user's valid events. For example, 
       the summary of the 1st event in the second container can be accessed with 
